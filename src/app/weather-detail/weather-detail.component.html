@@ -1,0 +1,21 @@
+<div class="card">
+    <div class="card-body">
+        <div class="row text-center">
+            <div class="col-lg-4 col-12">
+                <h1 class="display-1">{{details.temp2m.max}}</h1>
+                <p>Minima: {{details.temp2m.min}}</p>
+            </div>
+            <div class="col-lg-4 col-12">
+                <img style="max-width: 200px;" class="img-fluid mb-2" src="{{findImage()}}" alt="Fondo del clima">>
+            </div>
+            <div class="col-lg-4 col-12">
+                <p class="h1">
+                    {{details.date | dateToDayName }}
+                </p>
+                <p class="h6">
+                    {{details.date | formatDate }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
