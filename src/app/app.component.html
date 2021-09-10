@@ -1,16 +1,17 @@
 <main class="container-fluid">
     <div class="row" *ngIf="loading">
         <div class="col-12 text-center">
-            <h1>{{tittle}}</h1>
+            <h1>{{title}}</h1>
             <h1 class="display-1">Cargando. Espere un momento por favor</h1>
             <img src="assets/25.gif" alt="">
         </div>
     </div>
     <div *ngIf="!loading" class="row">
-        <h1>{{tittle}}</h1>
         <div class="col-12">
             <div class="text-center mt-2" *ngIf="!loading">
-                <strong class="display-4">{{city}}, {{region_name}}, {{country_name}}<br> {{hora}}</strong>
+                <h2>{{title}}</h2>
+                <h4>{{city}}, {{region_name}}, {{country_name}}<br> {{hora}}</h4>
+                <h6>{{time}}</h6>
             </div>
         </div>
         <div class="col-12">
@@ -21,26 +22,5 @@
             <app-weather-detail [details]="detalles"></app-weather-detail>
         </div>
 
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <div class="card border-success mb-3">
-                <div class="card-header">Créditos</div>
-                <div class="card-body text-success">
-                    <a href="https://parzibyte.me/blog/contrataciones-ayuda/" class="btn btn-warning btn-lg">Ayuda y soporte</a>
-                    <h1>Imágenes</h1>
-                    cloudy: Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-                    <br> clear: Icons made by <a href="https://www.flaticon.com/authors/good-ware" title="Good Ware">Good
-            Ware</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-                    <br> ishower,oshower: Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-                    <br> mcloudy: Icons made by <a href="https://www.flaticon.com/authors/srip" title="srip">srip</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
-                    <br> rain: Icons made by <a href="https://www.flaticon.com/authors/dinosoftlabs" title="DinosoftLabs">DinosoftLabs</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-                    <br> snow: Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-                    <br> tsrain: Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-                    <br> ts: Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
-                    <br>
-                </div>
-            </div>
-        </div>
     </div>
 </main>

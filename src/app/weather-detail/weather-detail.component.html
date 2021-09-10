@@ -1,15 +1,23 @@
-<div class="card">
+<div class="card shadow p-3 mb-5 bg-white rounded">
     <div class="card-body">
-        <div class="row text-center">
-            <div class="col-lg-4 col-12">
-                <h1 class="display-1">{{details.temp2m.max}}</h1>
-                <p>Minima: {{details.temp2m.min}}</p>
+        <div class="row ">
+            <div class="col-lg-8 col-12">
+                <div class="image-data-box">
+                    <img class="img-fluid mb-2 img-weather" src="{{findImage()}}" alt="Fondo del clima">
+                    <div class="maxtmpvalue">
+                        <div style="display: block;">
+                            <span class="tmpvalue">{{ details.temp2m.max }}</span>
+                            <span class="tmpunit">°C</span>
+                        </div>
+                    </div>
+                    <div class="tmpextradata">
+                        <span class="d-block">Minima: {{ details.temp2m.min}}°C</span>
+                        <span class="d-block">Viento: {{ details.wind10m_max | formatWind}}</span>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-4 col-12">
-                <img style="max-width: 200px;" class="img-fluid mb-2" src="{{findImage()}}" alt="Fondo del clima">>
-            </div>
-            <div class="col-lg-4 col-12">
-                <p class="h1">
+                <p class="h6">
                     {{details.date | dateToDayName }}
                 </p>
                 <p class="h6">

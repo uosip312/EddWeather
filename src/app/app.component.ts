@@ -7,7 +7,7 @@ import { WeatherService } from './service/weather.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'EddWeather';
+  title = 'Edd Weather';
 
   loading = false;
   city = "";
@@ -26,7 +26,7 @@ export class AppComponent {
     setInterval(() => {
       let time = "";
       let date = new Date();
-      let times = date.getHours();
+      let times = date.getHours() > 12 ? date.getHours() - 12 : date.getHours();
       let minutes = date.getMinutes();
       let seconds = date.getSeconds();
       let timeFixed = times.toString();
@@ -41,24 +41,29 @@ export class AppComponent {
       if (seconds < 10) {
         secondsFixed = "0" + secondsFixed;
       }
-      _this.time = `${timeFixed}:${minutesFixed}:${secondsFixed}`;
+      let meridian = date.getHours() > 12 ? "p.m" : "a.m";
+      _this.time = `${timeFixed}:${minutesFixed}:${secondsFixed} ${meridian}`;
     }, 500);
   }
 
   async ngOnInit() {
     // Hacer que se muestre el indicador de carga
     this.loading = true;
+    // Obtener los datos de GPS
+    const gpsData = await this.weatherService.getGPSLocation();
+    console.log(gpsData);
+    const { latitude, longitude } = gpsData;
     // Obtener los datos de ubicación
-    const locationData = await this.weatherService.getLocationData();
-    this.city = locationData.city;
-    this.region_name = locationData.region_name;
-    this.country_name = locationData.country_name;
-    const { latitude, longitude } = locationData;
+    // const locationData = await this.weatherService.getLocationData();
+    // this.city = locationData.city;
+    // this.region_name = locationData.region_name;
+    // this.country_name = locationData.country_name;
+    // const { latitude, longitude } = locationData;
     // Obtener, ahora, los datos del clima
-    const weatherData = await this.weatherService.getWeatherData(latitude, longitude);
+    const weatherData = await this.weatherService.getWeatherData(longitude, latitude);
     // Cortamos el arreglo para mostrar la de hoy, y también las siguientes
     this.detailsToday = weatherData.dataseries.slice(0, 1)[0];
-    this.detailsNext = weatherData.dataseries.slice(1, 5);
+    this.detailsNext = weatherData.dataseries.slice(1, 7);
 
     // Ocultamos el indicador de carga y comenzamos el reloj
     this.loading = false;

@@ -11,7 +11,7 @@ export class DateToDayNamePipe implements PipeTransform {
   ){}
 
   transform(dateAsString): string {
-    dateAsString = this.weatherService.formatDate(dateAsString) + " 00:00:00";
+    dateAsString = this.weatherService.formatDateMDY(dateAsString) + " 00:00:00";
     const days = [
       'Domingo',
       'Lunes',
