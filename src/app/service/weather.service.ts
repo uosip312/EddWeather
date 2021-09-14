@@ -5,7 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class WeatherService {
 
-  private LOCATION_API = "https://freegeoip.app/json/";
+  // private LOCATION_API = "https://freegeoip.app/json/";
+  private LOCATION_API = "https://freegeoip.live/json/";
 
   constructor() { }
 

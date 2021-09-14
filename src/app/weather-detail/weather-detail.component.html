@@ -1,12 +1,12 @@
 <div class="card shadow p-3 mb-5 bg-white rounded">
     <div class="card-body">
         <div class="row ">
-            <div class="col-lg-8 col-12">
+            <div class="col-lg-8 col-8">
                 <div class="image-data-box">
                     <img class="img-fluid mb-2 img-weather" src="{{findImage()}}" alt="Fondo del clima">
                     <div class="maxtmpvalue">
                         <div style="display: block;">
-                            <span class="tmpvalue">{{ details.temp2m.max }}</span>
+                            <span class="tmpvalue text-danger">{{ details.temp2m.max }}</span>
                             <span class="tmpunit">°C</span>
                         </div>
                     </div>
@@ -16,8 +16,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-12">
-                <p class="h6">
+            <div class="col-lg-4 col-4">
+                <p class="h6 text-danger fw-bolder">
                     {{details.date | dateToDayName }}
                 </p>
                 <p class="h6">

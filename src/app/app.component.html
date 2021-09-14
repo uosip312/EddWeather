@@ -1,20 +1,27 @@
-<main class="container-fluid">
+<main class="container-fluid bg-info">
+    <h2 class="text-center mt-2">{{title}}</h2>
+    <h5 class="text-center mt-2">{{time}}</h5>
+
     <div class="row" *ngIf="loading">
         <div class="col-12 text-center">
-            <h1>{{title}}</h1>
             <h1 class="display-1">Cargando. Espere un momento por favor</h1>
             <img src="assets/25.gif" alt="">
         </div>
     </div>
     <div *ngIf="!loading" class="row">
-        <div class="col-12">
-            <div class="text-center mt-2" *ngIf="!loading">
-                <h2>{{title}}</h2>
-                <h4>{{city}}, {{region_name}}, {{country_name}}<br> {{hora}}</h4>
-                <h6>{{time}}</h6>
+        <div class="col-12 col-md-6">
+            <div class="card shadow p-3 mb-5 bg-white rounded">
+                <div class="card-body">
+                    <div class="text-center" *ngIf="!loading">
+                        <!-- <h4>{{city}}</h4> -->
+                        <!-- <h4>{{region_name}}</h4> -->
+                        <h5 class="mb-0">{{city}} <br> {{country_name}}</h5>
+                        <img src="https://www.countryflags.io/{{country_code}}/shiny/64.png">
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-12">
+        <div class="col-12 col-md-6">
             <app-weather-detail [details]="detailsToday"></app-weather-detail>
         </div>
 

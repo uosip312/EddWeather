@@ -13,6 +13,7 @@ export class AppComponent {
   city = "";
   region_name = "";
   country_name = "";
+  country_code = "";
   time = "";
   detailsToday = {};
   detailsNext = [];
@@ -51,13 +52,18 @@ export class AppComponent {
     this.loading = true;
     // Obtener los datos de GPS
     const gpsData = await this.weatherService.getGPSLocation();
-    console.log(gpsData);
-    const { latitude, longitude } = gpsData;
+    // console.log(gpsData);
+    let { latitude, longitude } = gpsData;
     // Obtener los datos de ubicación
-    // const locationData = await this.weatherService.getLocationData();
-    // this.city = locationData.city;
-    // this.region_name = locationData.region_name;
-    // this.country_name = locationData.country_name;
+    const locationData = await this.weatherService.getLocationData();
+    this.city = locationData.city;
+    this.region_name = locationData.region_name;
+    this.country_name = locationData.country_name;
+    this.country_code = locationData.country_code;
+    if ( (latitude == undefined) && (longitude == undefined) ){
+      latitude = locationData.latitude;
+      longitude = locationData.longitude;
+    }
     // const { latitude, longitude } = locationData;
     // Obtener, ahora, los datos del clima
     const weatherData = await this.weatherService.getWeatherData(longitude, latitude);
