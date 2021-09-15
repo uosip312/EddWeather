@@ -54,6 +54,7 @@ export class AppComponent {
     const gpsData = await this.weatherService.getGPSLocation();
     // console.log(gpsData);
     let { latitude, longitude } = gpsData;
+    // console.log(latitude, longitude);
     // Obtener los datos de ubicación
     const locationData = await this.weatherService.getLocationData();
     this.city = locationData.city;

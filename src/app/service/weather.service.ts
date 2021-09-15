@@ -22,9 +22,6 @@ export class WeatherService {
       return coordenadas;
     }
 
-    const onLocationError = err => {
-      console.log(err);
-    }
     return new Promise<any>((resolve, reject) => {
       if (!navigator.geolocation) {
         reject(Error('No soportado'));
@@ -35,8 +32,13 @@ export class WeatherService {
         const position = location.coords;
         resolve(position)
       }, (locationError) => {
-        const err = locationError;
-        reject(err);
+        const err = locationError.message;
+        const position = {
+          latitude: undefined,
+          longitude: undefined
+        }
+        alert(err);
+        resolve(position)
       },requestOptions);
     });
 
@@ -48,7 +50,7 @@ export class WeatherService {
   }
 
   async getWeatherData(longitude: string, latitude: string) {
-    const response = await fetch(`http://www.7timer.info/bin/civillight.php?lon=${longitude}&lat=${latitude}&ac=0&unit=metric&output=json`);
+    const response = await fetch(`https://www.7timer.info/bin/civillight.php?lon=${longitude}&lat=${latitude}&ac=0&unit=metric&output=json`);
     return await response.json();
   }
 
